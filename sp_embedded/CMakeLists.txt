@@ -11,7 +11,9 @@ cmake_minimum_required(VERSION 3.22)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
-
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -29,7 +31,7 @@ project(${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
 # Enable CMake support for ASM and C languages
-enable_language(C ASM)
+enable_language(C CXX ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME})
@@ -43,15 +45,50 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 )
 
 # Add sources to executable
+file(GLOB_RECURSE USER_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/app/*.cpp
+)
+
+file(GLOB_RECURSE MIDDLEWARE_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/bmi088/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/buzzer/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/can/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/dbus/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/led/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/motor/rm_motor/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/crc/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/math_tools/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/pid/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/low_pass_filter/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/timer/*.cpp
+)
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user sources here
+    ${USER_SOURCES}
+    ${MIDDLEWARE_SOURCES}
 )
 
 # Add include paths
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined include paths
+file(GLOB MIDDLEWARE_INCLUDE_DIRS
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/bmi088
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/buzzer
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/can
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/dbus
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/io/led
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/motor/rm_motor
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/crc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/math_tools
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/pid
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/low_pass_filter
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/timer
 )
 
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/app
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware
+    ${MIDDLEWARE_INCLUDE_DIRS}
+)
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
