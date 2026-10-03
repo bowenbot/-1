@@ -63,6 +63,7 @@
 - V1.0.0（初始版本）：CubeMX 工程、FreeRTOS、sp_middleware submodule、蜂鸣器模块。
 - V1.1.0：新增 LED 流水灯模块。
 - V1.2.0：新增串口打印模块。
+- V1.3.0：新增 IMU 模块（BMI088 + Mahony）。
 
 ## 八、Git 提交规范
 - 前缀：`feat` / `fix` / `docs` / `chore` / `build` / `refactor`
