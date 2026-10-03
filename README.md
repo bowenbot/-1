@@ -60,13 +60,8 @@
 - 修改内容：未修改。
 
 ## 七、版本记录
-- V1.0.0：CubeMX 工程、FreeRTOS、sp_middleware submodule
-- V1.1.0：蜂鸣器模块
-- V1.2.0：LED 流水灯模块
-- V1.3.0：串口打印模块
-- V1.4.0：IMU 模块（BMI088 + Mahony）
-- V1.5.0：DT7 遥控器模块
-- V1.6.0：GM6020 电机 CAN 控制
+- V1.0.0：CubeMX 工程 + FreeRTOS + sp_middleware submodule
+- V1.1.0：蜂鸣器、LED、串口打印、IMU、DT7 遥控器、GM6020 电机 CAN 控制、云台控制器
 
 ## 八、Git 提交规范
 - 前缀：`feat` / `fix` / `docs` / `chore` / `build` / `refactor`
