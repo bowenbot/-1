@@ -13,7 +13,7 @@ constexpr uint8_t MAX_MOTORS = 8;
 Gm6020Motor* g_motors[MAX_MOTORS] = {nullptr};
 uint8_t g_motor_count = 0;
 
-constexpr uint16_t GM6020_FEEDBACK_BASE_ID = 0x205;
+constexpr uint16_t GM6020_FEEDBACK_BASE_ID = 0x204;
 constexpr uint16_t GM6020_CMD_ID_1_TO_4 = 0x1FF;
 constexpr uint16_t GM6020_CMD_ID_5_TO_7 = 0x2FF;
 
