@@ -62,6 +62,7 @@ file(GLOB_RECURSE MIDDLEWARE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/pid/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/low_pass_filter/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/timer/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/sp_middleware/tools/mahony/*.cpp
 )
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${USER_SOURCES}
