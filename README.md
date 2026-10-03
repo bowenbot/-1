@@ -64,6 +64,7 @@
 - V1.1.0：新增 LED 流水灯模块。
 - V1.2.0：新增串口打印模块。
 - V1.3.0：新增 IMU 模块（BMI088 + Mahony）。
+- V1.4.0：新增 DT7 遥控器模块。
 
 ## 八、Git 提交规范
 - 前缀：`feat` / `fix` / `docs` / `chore` / `build` / `refactor`
