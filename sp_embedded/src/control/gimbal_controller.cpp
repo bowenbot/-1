@@ -77,7 +77,14 @@ void GimbalController::update_link_mode() {
     this->inited_ = true;
   }
 
-  const float yaw_delta = yaw - this->last_yaw_rad_;
+  // 计算 yaw 变化量，并归一化到 [-π, π]，避免 ±π 跳变
+  float yaw_delta = yaw - this->last_yaw_rad_;
+  if (yaw_delta > 3.14159265f) {
+    yaw_delta -= 6.28318531f;
+  }
+  if (yaw_delta < -3.14159265f) {
+    yaw_delta += 6.28318531f;
+  }
 
   // 检测手动转 A
   const float target_a_before = yaw + this->offset_a_rad_;
