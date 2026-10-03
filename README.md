@@ -61,6 +61,7 @@
 
 ## 七、版本记录
 - V1.0.0（初始版本）：CubeMX 工程、FreeRTOS、sp_middleware submodule、蜂鸣器模块。
+- V1.1.0：新增 LED 流水灯模块。
 （后续根据实际提交更新）
 
 ## 八、Git 提交规范
